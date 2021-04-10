@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsuarioCursoTable extends Migration
+class CreateDisciplinasPreRequisitosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateUsuarioCursoTable extends Migration
      */
     public function up()
     {
-        Schema::create('usuarios_cursos', function (Blueprint $table) {
-            $table->foreignId('id_usuario')->constrained('usuarios');
-            $table->foreignId('id_curso')->constrained('cursos');
+        Schema::create('disciplinas_pre_requisitos', function (Blueprint $table) {
+            $table->foreignId('id_pre_requisito')->constrained('disciplinas');
+            $table->foreignId('id_disciplina')->constrained('disciplinas');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateUsuarioCursoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usuario_curso');
+        Schema::dropIfExists('disciplinas_pre_requisitos');
     }
 }
