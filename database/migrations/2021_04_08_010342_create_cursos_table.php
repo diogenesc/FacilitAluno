@@ -17,7 +17,7 @@ class CreateCursosTable extends Migration
             $table->id();
             $table->string('nome');
             $table->integer('duracao');
-            $table->integer('quantidadeDisciplinas');
+            $table->integer('quantidade_disciplinas');
             $table->timestamps();
 
             $table->foreignId('id_instituicao')

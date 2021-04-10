@@ -17,7 +17,7 @@ class CreateUsuariosTable extends Migration
             $table->id();
             $table->string('email')->unique();
             $table->string('password');
-            $table->boolean('flagAdmin');
+            $table->boolean('flag_admin');
             $table->rememberToken();
             $table->timestamps();
         });

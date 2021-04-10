@@ -20,8 +20,8 @@ class CreateAtividadesTable extends Migration
             $table->integer('prioridade')->nullable();
             $table->integer('marcador')->nullable();
             $table->string('cor')->nullable();
-            $table->date('dataInicio')->nullable();
-            $table->date('dataFim')->nullable();
+            $table->date('data_inicio')->nullable();
+            $table->date('data_fim')->nullable();
             $table->boolean('alarme');
             $table->timestamps();
 
