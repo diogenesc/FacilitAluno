@@ -17,8 +17,6 @@ class CreateArquivosTable extends Migration
             $table->id();
             $table->string('path');
             $table->timestamps();
-
-            $table->foreignId('id_usuario')->constrained('usuarios');
         });
     }
 
