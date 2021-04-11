@@ -26,3 +26,7 @@ Route::resources([
     'metas' => \App\Http\Controllers\MetaController::class,
     'materiais' => \App\Http\Controllers\MaterialController::class
 ]);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
