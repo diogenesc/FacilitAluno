@@ -17,10 +17,10 @@ class CreateDisciplinasTable extends Migration
             $table->id();
             $table->string('codigo');
             $table->string('nome');
-            $table->integer('cargaHoraria');
+            $table->integer('carga_horaria');
             $table->integer('status');
             $table->float('media');
-            $table->float('porcentFaltas');
+            $table->float('porcent_faltas');
             $table->timestamps();
         });
     }

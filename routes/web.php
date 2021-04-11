@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resources([
+    'instituicoes' => \App\Http\Controllers\InstituicaoController::class,
+    'cursos' => \App\Http\Controllers\CursoController::class,
+    'disciplinas' => \App\Http\Controllers\DisciplinaController::class,
+    'atividades' => \App\Http\Controllers\AtividadeController::class,
+    'anotacoes' => \App\Http\Controllers\AnotacaoController::class,
+    'metas' => \App\Http\Controllers\MetaController::class,
+    'materiais' => \App\Http\Controllers\MaterialController::class
+]);

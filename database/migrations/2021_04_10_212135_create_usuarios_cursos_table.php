@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMateriaisTable extends Migration
+class CreateUsuariosCursosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateMateriaisTable extends Migration
      */
     public function up()
     {
-        Schema::create('materiais', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome');
-            $table->timestamps();
-
+        Schema::create('usuarios_cursos', function (Blueprint $table) {
             $table->foreignId('id_usuario')->constrained('usuarios');
-            $table->foreignId('id_arquivo')->constrained('arquivos');
+            $table->foreignId('id_curso')->constrained('cursos');
         });
     }
 
@@ -30,6 +26,6 @@ class CreateMateriaisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('materiais');
+        Schema::dropIfExists('usuarios_cursos');
     }
 }

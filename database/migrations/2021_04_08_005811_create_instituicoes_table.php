@@ -19,8 +19,8 @@ class CreateInstituicoesTable extends Migration
             $table->string('sigla');
             $table->string('campus')->nullable();
             $table->string('localizacao');
-            $table->integer('metodoAvaliacao');
-            $table->integer('divisaoPeriodos');
+            $table->integer('metodo_avaliacao');
+            $table->integer('divisao_periodos');
             $table->timestamps();
         });
     }
