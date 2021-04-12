@@ -1,6 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MetaController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AlunoController;
+use App\Http\Controllers\CursoController;
+use App\Http\Controllers\AnotacaoController;
+use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\AtividadeController;
+use App\Http\Controllers\DisciplinaController;
+use App\Http\Controllers\InstituicaoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,13 +29,15 @@ Route::get('/', function () {
 });
 
 Route::resources([
-    'instituicoes' => \App\Http\Controllers\InstituicaoController::class,
-    'cursos' => \App\Http\Controllers\CursoController::class,
-    'disciplinas' => \App\Http\Controllers\DisciplinaController::class,
-    'atividades' => \App\Http\Controllers\AtividadeController::class,
-    'anotacoes' => \App\Http\Controllers\AnotacaoController::class,
-    'metas' => \App\Http\Controllers\MetaController::class,
-    'materiais' => \App\Http\Controllers\MaterialController::class
+    'instituicoes' => InstituicaoController::class,
+    'cursos' => CursoController::class,
+    'disciplinas' => DisciplinaController::class,
+    'atividades' => AtividadeController::class,
+    'anotacoes' => AnotacaoController::class,
+    'metas' => MetaController::class,
+    'materiais' => MaterialController::class,
+    'admins' => AdminController::class,
+    'alunos' => AlunoController::class
 ]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
