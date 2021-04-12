@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MetaController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\AnotacaoController;
 use App\Http\Controllers\MaterialController;
