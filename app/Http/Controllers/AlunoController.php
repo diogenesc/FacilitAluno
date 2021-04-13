@@ -28,7 +28,7 @@ class AlunoController extends Controller
      */
     public function create()
     {
-        return view('');
+        return view('auth.register');
     }
 
     /**

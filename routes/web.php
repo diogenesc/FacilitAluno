@@ -22,6 +22,8 @@ use App\Http\Controllers\InstituicaoController;
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -37,3 +39,5 @@ Route::resources([
     'admins' => AdminController::class,
     'alunos' => AlunoController::class
 ]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -1,0 +1,75 @@
+
+.header {
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    display: flex;
+    margin-bottom: 100px;
+}
+
+.header .slogan {
+    align-items: left;
+    width: 30%;
+    height: 100%;
+    display: flex;
+}
+
+.header .slogan img {
+    width: 2.5rem;
+    margin: 0 15px 0 30px;
+}
+
+.header .slogan p {
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: 0;
+
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: black;
+}
+
+.header .link-acesso {
+    text-align: right;
+    margin-right: 40px;
+}
+
+.header .link-acesso a {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-size: 1rem;
+    color: black;
+}
+
+.header .link-acesso .login {
+    padding: 10px 20px 10px 20px;
+    background-color: #3498ac;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.header .link-acesso .login:hover {
+    background-color: #288a9a;
+}
+
+.container {
+    font-family: 'Archivo Narrow', sans-serif;
+    color: #2e2f30;
+    margin-left: 80px;
+    display: flex;
+}
+
+.container .content .titulo {
+    font-size: 4rem;
+    line-height: 4.2rem;
+}
+
+.container .content .texto {
+    font-size: 1.3rem;
+}
+
+.container img {
+    width: 50%;
+}
