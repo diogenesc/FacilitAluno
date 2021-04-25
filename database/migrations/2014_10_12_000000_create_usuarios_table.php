@@ -18,7 +18,6 @@ class CreateUsuariosTable extends Migration
             $table->string('nome');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('password-confirm');
             $table->boolean('flag_admin')->nullable();
             $table->rememberToken();
             $table->timestamps();
