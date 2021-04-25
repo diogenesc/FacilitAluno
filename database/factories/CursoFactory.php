@@ -23,7 +23,7 @@ class CursoFactory extends Factory
     public function definition()
     {
         return [
-            'nome' => $this->faker->sentence(),
+            'nome' => $this->faker->company(),
             'duracao' => $this->faker->numberBetween(8,12),
             'quantidade_disciplinas' => $this->faker->numberBetween(40, 60)
         ];

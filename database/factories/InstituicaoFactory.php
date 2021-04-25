@@ -23,7 +23,7 @@ class InstituicaoFactory extends Factory
     public function definition()
     {
         return [
-            'nome' => $this->faker->sentence(),
+            'nome' => $this->faker->company(),
             'sigla' => Str::upper(Str::random(4)),
             'localizacao' => $this->faker->address,
             'metodo_avaliacao' => $this->faker->numberBetween(6, 10),

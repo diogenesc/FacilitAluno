@@ -24,7 +24,7 @@ class DisciplinaFactory extends Factory
     {
         return [
             'codigo' => Str::upper(Str::random(6)),
-            'nome' => $this->faker->sentence(),
+            'nome' => $this->faker->company(),
             'carga_horaria' => $this->faker->numberBetween(2000, 3000),
             'status' => $this->faker->numberBetween(1, 3),
             'media' => $this->faker->numberBetween(6, 10),
