@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Anotacao extends Model
 {
@@ -15,6 +15,12 @@ class Anotacao extends Model
      * @var string
      */
     protected $table = 'anotacoes';
+
+    protected $fillable = [
+        'titulo',
+        'conteudo',
+        'cor'
+    ];
 
     /**
      * Retorna usuario
