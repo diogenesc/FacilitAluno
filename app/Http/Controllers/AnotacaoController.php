@@ -16,7 +16,7 @@ class AnotacaoController extends Controller
      */
     public function index()
     {
-        $anotacoes = Anotacao::all();
+        $anotacoes = Auth::user()->anotacoes;
 
         return view('anotacao.index', ['anotacoes' => $anotacoes]);
     }
