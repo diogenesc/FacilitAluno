@@ -56,7 +56,7 @@ class Usuario extends Authenticatable
      */
     public function cursos()
     {
-        return $this->hasMany(Curso::class, 'id_usuario');
+        return $this->belongsToMany(Curso::class, 'usuarios_cursos', 'id_usuario', 'id_curso');
     }
 
     /**
@@ -64,7 +64,7 @@ class Usuario extends Authenticatable
      */
     public function disciplinas()
     {
-        return $this->hasMany(Disciplina::class, 'id_usuario');
+        return $this->belongsToMany(Disciplina::class, 'usuarios_disciplinas', 'id_usuario', 'id_disciplina');
     }
 
     /**
