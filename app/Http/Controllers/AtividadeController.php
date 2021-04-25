@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Atividade;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\AtividadeRequest;
 
 class AtividadeController extends Controller
 {
@@ -14,7 +16,9 @@ class AtividadeController extends Controller
      */
     public function index()
     {
-        //
+        $atividades = Auth::user()->atividades;
+
+        return view('atividade.index', ['atividades' => $atividades]);
     }
 
     /**
@@ -24,7 +28,7 @@ class AtividadeController extends Controller
      */
     public function create()
     {
-        //
+        return view('atividade.create');
     }
 
     /**
@@ -33,9 +37,22 @@ class AtividadeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AtividadeRequest $request)
     {
-        //
+        $request->validated();
+
+        Auth::user()->atividades()->create([
+            'titulo' => $request->titulo,
+            'descricao' => $request->descricao,
+            'prioridade' => $request->prioridade,
+            'marcador' => $request->marcador,
+            'cor' => $request->cor,
+            'data_inicio' => $request->data_inicio,
+            'data_fim' => $request->data_fim,
+            'alarme' => $request->alarme
+        ]);
+
+        return redirect()->route('atividade.index');
     }
 
     /**
@@ -46,7 +63,7 @@ class AtividadeController extends Controller
      */
     public function show(Atividade $atividade)
     {
-        //
+        return view('atividade.show', ['atividade' => $atividade]);
     }
 
     /**
@@ -57,7 +74,7 @@ class AtividadeController extends Controller
      */
     public function edit(Atividade $atividade)
     {
-        //
+        return view('atividade.edit', ['atividade' => $atividade]);
     }
 
     /**
@@ -67,9 +84,22 @@ class AtividadeController extends Controller
      * @param  \App\Models\Atividade  $atividade
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Atividade $atividade)
+    public function update(AtividadeRequest $request, Atividade $atividade)
     {
-        //
+        $request->validated();
+
+        $atividade->titulo = $request->titulo;
+        $atividade->descricao =  $request->descricao;
+        $atividade->prioridade =  $request->prioridade;
+        $atividade->marcador =  $request->marcador;
+        $atividade->cor =  $request->cor;
+        $atividade->data_inicio =  $request->data_inicio;
+        $atividade->data_fim =  $request->data_fim;
+        $atividade->alarme =  $request->alarme;
+
+        $atividade->save();
+
+        return redirect()->route('atividade.index');
     }
 
     /**
@@ -80,6 +110,8 @@ class AtividadeController extends Controller
      */
     public function destroy(Atividade $atividade)
     {
-        //
+        $atividade->delete();
+
+        return redirect()->route('atividade.index');
     }
 }

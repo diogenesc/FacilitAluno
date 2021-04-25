@@ -9,6 +9,17 @@ class Atividade extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'titulo',
+        'descricao',
+        'prioridade',
+        'marcador',
+        'cor',
+        'data_inicio',
+        'data_fim',
+        'alarme'
+    ];
+
     /**
      * Retorna usuario
      */
