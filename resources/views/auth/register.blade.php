@@ -6,11 +6,11 @@
         <form method="POST" action="{{ route('register') }}">
         @csrf
             <div class="form-icon">
-                <img src="{{asset('assets/img/logo.svg')}}" class="icon icon-user" style="width: 55%; margin-bottom:15%"></img>
+                <img src="{{ asset('assets/img/logo.svg') }}" class="icon icon-user" style="width: 55%; margin-bottom:15%" />
             </div>
             <p id="slogan">FacilitAluno</p>
             <div class="form-group">
-                <input id="name" type="text" class="form-control item" name="name" value="{{ isset($usuario) ? $usuario->name : old('name')}}" placeholder="Nome" required autocomplete="name" autofocus>
+                <input id="nome" type="text" class="form-control item" name="nome" value="{{ isset($usuario) ? $usuario->nome : old('nome')}}" placeholder="Nome" required autocomplete="name" autofocus>
             </div>
             <div class="form-group">
                 <input id="email" type="email" class="form-control item" name="email" value="{{ isset($usuario) ? $usuario->email : old('email')}}" placeholder="Email" required autocomplete="email">

@@ -3,10 +3,10 @@
 @section('titulo', (isset($usuario) ? "FacilitAluno | Editar" : " FacilitAluno | Cadastrar"))
 
 @section('form')
-        <form method="POST" action="{{ route('login') }}"> 
+        <form method="POST" action="{{ route('login') }}">
         @csrf
             <div class="form-icon">
-                <img src="{{asset('assets/img/logo.svg')}}" class="icon icon-user" style="width: 55%; margin-bottom:15%"></img>
+                <img src="{{asset('assets/img/logo.svg')}}" class="icon icon-user" style="width: 55%; margin-bottom:15%" />
             </div>
             <p id="slogan">FacilitAluno</p>
             <div class="form-group">

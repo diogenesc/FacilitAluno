@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MetaController;
 use App\Http\Controllers\AdminController;
@@ -28,16 +29,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resources([
-    'instituicoes' => InstituicaoController::class,
-    'cursos' => CursoController::class,
-    'disciplinas' => DisciplinaController::class,
-    'atividades' => AtividadeController::class,
-    'anotacoes' => AnotacaoController::class,
-    'metas' => MetaController::class,
-    'materiais' => MaterialController::class,
-    'admins' => AdminController::class,
-    'alunos' => AlunoController::class
-]);
+Route::middleware(['auth'])->group(function () {
+    Route::resources([
+        'instituicao' => InstituicaoController::class,
+        'curso' => CursoController::class,
+        'disciplina' => DisciplinaController::class,
+        'atividade' => AtividadeController::class,
+        'anotacao' => AnotacaoController::class,
+        'meta' => MetaController::class,
+        'materiai' => MaterialController::class,
+        'admin' => AdminController::class,
+        'aluno' => AlunoController::class
+    ]);
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
