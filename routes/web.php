@@ -37,10 +37,12 @@ Route::middleware(['auth'])->group(function () {
         'atividade' => AtividadeController::class,
         'anotacao' => AnotacaoController::class,
         'meta' => MetaController::class,
-        'materiai' => MaterialController::class,
+        'material' => MaterialController::class,
         'admin' => AdminController::class,
         'aluno' => AlunoController::class
     ]);
+
+    Route::get('/material/{material}/download', [MaterialController::class, 'download'])->name('material.download');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

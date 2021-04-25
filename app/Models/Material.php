@@ -16,6 +16,10 @@ class Material extends Model
      */
     protected $table = 'materiais';
 
+    protected $fillable = [
+        'nome'
+    ];
+
     /**
      * Retorna usuario
      */
@@ -29,6 +33,6 @@ class Material extends Model
      */
     public function arquivo()
     {
-        return $this->hasOne(Arquivo::class, 'id_arquivo');
+        return $this->belongsTo(Arquivo::class, 'id_arquivo');
     }
 }

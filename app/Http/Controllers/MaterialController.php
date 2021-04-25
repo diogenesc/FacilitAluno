@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Arquivo;
 use App\Models\Material;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\MaterialRequest;
+use Exception;
+use Illuminate\Support\Facades\Storage;
 
 class MaterialController extends Controller
 {
@@ -14,7 +19,9 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        //
+        $materiais = Auth::user()->materiais;
+
+        return view('material.index', ['materiais' => $materiais]);
     }
 
     /**
@@ -24,7 +31,7 @@ class MaterialController extends Controller
      */
     public function create()
     {
-        //
+        return view('material.create');
     }
 
     /**
@@ -33,9 +40,26 @@ class MaterialController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MaterialRequest $request)
     {
-        //
+        $path = $request->file('arquivo')->store('arquivos');
+        try {
+            $arquivo = new Arquivo();
+            $arquivo->path = $path;
+            $arquivo->save();
+
+            $material = new Material();
+            $material->nome = $request->nome;
+            $material->arquivo()->associate($arquivo);
+            $material->usuario()->associate(Auth::user());
+
+            $material->save();
+        } catch(\Exception $e) {
+            Storage::delete($path);
+            $arquivo->delete();
+        }
+
+        return redirect()->route('material.index');
     }
 
     /**
@@ -46,7 +70,7 @@ class MaterialController extends Controller
      */
     public function show(Material $material)
     {
-        //
+        return view('material.show', ['material' => $material]);
     }
 
     /**
@@ -57,7 +81,7 @@ class MaterialController extends Controller
      */
     public function edit(Material $material)
     {
-        //
+        return view('material.edit', ['material' => $material]);
     }
 
     /**
@@ -67,9 +91,18 @@ class MaterialController extends Controller
      * @param  \App\Models\Material  $material
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Material $material)
+    public function update(MaterialRequest $request, Material $material)
     {
-        //
+        $material->nome = $request->nome;
+
+        Storage::delete($material->arquivo->path);
+        $path = $request->file('arquivo')->store('arquivos');
+        $material->arquivo->path = $path;
+
+        $material->arquivo->save();
+        $material->save();
+
+        return redirect()->route('material.index');
     }
 
     /**
@@ -80,6 +113,16 @@ class MaterialController extends Controller
      */
     public function destroy(Material $material)
     {
-        //
+        $arquivo = $material->arquivo;
+        Storage::delete($arquivo->path);
+        $material->delete();
+        Arquivo::find($arquivo->id)->delete();
+
+        return redirect()->route('material.index');
+    }
+
+    public function download(Material $material)
+    {
+        return Storage::download($material->arquivo->path);
     }
 }
