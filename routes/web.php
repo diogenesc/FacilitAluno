@@ -30,19 +30,20 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/material/{material}/download', [MaterialController::class, 'download'])->name('material.download');
+    Route::resource('meta', MetaController::class)->parameters([
+        'meta' => 'meta'
+    ]);
     Route::resources([
         'instituicao' => InstituicaoController::class,
         'curso' => CursoController::class,
         'disciplina' => DisciplinaController::class,
         'atividade' => AtividadeController::class,
         'anotacao' => AnotacaoController::class,
-        'meta' => MetaController::class,
         'material' => MaterialController::class,
         'admin' => AdminController::class,
         'aluno' => AlunoController::class
     ]);
-
-    Route::get('/material/{material}/download', [MaterialController::class, 'download'])->name('material.download');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

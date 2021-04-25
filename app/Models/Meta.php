@@ -9,6 +9,11 @@ class Meta extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nome',
+        'prioridade'
+    ];
+
     /**
      * Retorna usuario
      */

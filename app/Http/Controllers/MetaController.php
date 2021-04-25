@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Meta;
 use Illuminate\Http\Request;
+use App\Http\Requests\MetaRequest;
+use Illuminate\Support\Facades\Auth;
 
 class MetaController extends Controller
 {
@@ -14,7 +16,9 @@ class MetaController extends Controller
      */
     public function index()
     {
-        //
+        $metas = Auth::user()->metas;
+
+        return view('meta.index', ['metas' => $metas]);
     }
 
     /**
@@ -24,7 +28,7 @@ class MetaController extends Controller
      */
     public function create()
     {
-        //
+        return view('meta.create');
     }
 
     /**
@@ -33,9 +37,14 @@ class MetaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MetaRequest $request)
     {
-        //
+        Auth::user()->metas()->create([
+            'nome' => $request->nome,
+            'prioridade' => $request->prioridade
+        ]);
+
+        return redirect()->route('meta.index');
     }
 
     /**
@@ -46,7 +55,7 @@ class MetaController extends Controller
      */
     public function show(Meta $meta)
     {
-        //
+        return view('meta.show', ['meta' => $meta]);
     }
 
     /**
@@ -57,7 +66,7 @@ class MetaController extends Controller
      */
     public function edit(Meta $meta)
     {
-        //
+        return view('meta.edit', ['meta' => $meta]);
     }
 
     /**
@@ -67,9 +76,14 @@ class MetaController extends Controller
      * @param  \App\Models\Meta  $meta
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Meta $meta)
+    public function update(MetaRequest $request, Meta $meta)
     {
-        //
+        $meta->nome = $request->nome;
+        $meta->prioridade =  $request->prioridade;
+
+        $meta->save();
+
+        return redirect()->route('meta.index');
     }
 
     /**
@@ -80,6 +94,8 @@ class MetaController extends Controller
      */
     public function destroy(Meta $meta)
     {
-        //
+        $meta->delete();
+
+        return redirect()->route('meta.index');
     }
 }
