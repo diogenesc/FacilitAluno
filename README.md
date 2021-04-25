@@ -12,7 +12,7 @@ FacilitAluno é uma aplicação web com o objetivo de reunir ferramentas essenci
 - Bloco de anotações
 - Armazenamento em cloud
 - Metas do usuário
-## Authors
+## Autores
 
 - [@diogenesc](https://www.github.com/diogenesc)
 - [@GabrielMotaBLima](https://www.github.com/GabrielMotaBLima)
