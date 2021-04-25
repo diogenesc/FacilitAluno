@@ -39,8 +39,6 @@ class AtividadeController extends Controller
      */
     public function store(AtividadeRequest $request)
     {
-        $request->validated();
-
         Auth::user()->atividades()->create([
             'titulo' => $request->titulo,
             'descricao' => $request->descricao,
@@ -86,8 +84,6 @@ class AtividadeController extends Controller
      */
     public function update(AtividadeRequest $request, Atividade $atividade)
     {
-        $request->validated();
-
         $atividade->titulo = $request->titulo;
         $atividade->descricao =  $request->descricao;
         $atividade->prioridade =  $request->prioridade;

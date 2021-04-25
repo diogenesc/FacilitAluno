@@ -28,7 +28,7 @@ class AnotacaoController extends Controller
      */
     public function create()
     {
-        return view('anotacoes.create');
+        return view('anotacao.create');
     }
 
     /**
@@ -39,8 +39,6 @@ class AnotacaoController extends Controller
      */
     public function store(AnotacaoRequest $request)
     {
-        $request->validated();
-
         Auth::user()->anotacoes()->create([
             'titulo' => $request->titulo,
             'conteudo' => $request->conteudo,
@@ -81,8 +79,6 @@ class AnotacaoController extends Controller
      */
     public function update(AnotacaoRequest $request, Anotacao $anotacao)
     {
-        $request->validated();
-
         $anotacao->titulo = $request->titulo;
         $anotacao->conteudo =  $request->conteudo;
         $anotacao->cor =  $request->cor;

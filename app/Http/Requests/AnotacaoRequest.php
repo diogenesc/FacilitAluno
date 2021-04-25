@@ -40,7 +40,7 @@ class AnotacaoRequest extends FormRequest
         return [
             'required' => ':attribute é um campo obrigatório',
             'max' => 'O tamanho máximo para este campo é :max',
-            'string' => 'Esse campo deveria ser uma string'
+            'string' => ':attribute campo deveria ser uma string'
         ];
     }
 

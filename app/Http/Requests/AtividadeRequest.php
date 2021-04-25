@@ -44,7 +44,7 @@ class AtividadeRequest extends FormRequest
     {
         return [
             'required' => ':attribute é um campo obrigatório',
-            'max' => 'O tamanho máximo para este campo é :max',
+            'max' => 'O tamanho máximo do campo :attribute é :max',
             'string' => ':attribute deveria ser uma string',
             'integer' => ':attribute deveria ser um inteiro',
             'date' => ':attribute deveria ser uma data',
