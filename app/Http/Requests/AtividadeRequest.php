@@ -48,7 +48,7 @@ class AtividadeRequest extends FormRequest
             'string' => ':attribute deveria ser uma string',
             'integer' => ':attribute deveria ser um inteiro',
             'date' => ':attribute deveria ser uma data',
-            'boolena' => ':attribute deveria ser um booleano'
+            'boolean' => ':attribute deveria ser um booleano'
         ];
     }
 
