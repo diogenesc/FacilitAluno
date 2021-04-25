@@ -48,7 +48,8 @@ class AnotacaoRequest extends FormRequest
     {
         return [
             'titulo' => 'Título',
-            'conteudo' => 'Conteúdo'
+            'conteudo' => 'Conteúdo',
+            'cor' => 'Cor'
         ];
     }
 }
