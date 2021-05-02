@@ -15,7 +15,7 @@
             <div class="form-group">
                 <input id="password" type="password" class="form-control item" name="password" placeholder="Senha" required autocomplete="new-password">
             </div>
-            
+
             <div class="form-group">
                     <button type="submit" class="btn btn-block create-account">Entrar</button>
             </div>
@@ -25,11 +25,20 @@
                     {{ __('Esqueci minha senha') }}
                 </a>
             @endif
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </form>
 @endsection
 
 
-<!-- 
+<!--
 
 @section('content')
 <div class="container">
@@ -70,9 +79,9 @@
                             </div>
                         </div>
 
-                        
 
-                        
+
+
                     </form>
                 </div>
             </div>
